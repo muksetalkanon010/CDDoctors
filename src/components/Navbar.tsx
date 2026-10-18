@@ -429,28 +429,78 @@ export default function Navbar() {
       {/* ========================================================================= */}
       {/* 📱 3. MOBILE SLIDE-OUT DRAWER MENU                                       */}
       {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 📱 3. MOBILE SLIDE-OUT DRAWER MENU (EduHunters Style, CD Doctors Theme)   */}
+      {/* ========================================================================= */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-[99999] md:hidden font-bengali">
+          {/* Dark Overlay Backdrop with Smooth Blur */}
           <div 
-            className="fixed inset-0 bg-slate-950/70 backdrop-blur-xs transition-opacity"
+            className={`fixed inset-0 bg-slate-950/75 backdrop-blur-xs transition-opacity duration-300 ${
+              isClosing ? 'opacity-0' : 'opacity-100'
+            }`}
             onClick={closeMobileMenu}
           />
-          <div className="fixed top-0 right-0 bottom-0 w-[280px] bg-white shadow-2xl p-6 flex flex-col justify-between z-10 animate-in slide-in-from-right duration-300">
-            <div className="space-y-6">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-4">
-                <div className="flex items-center gap-2.5">
-                  <img src="/logo.png" alt="CD Doctors" className="w-8 h-8 rounded-full object-cover" />
-                  <span className="font-black text-base text-slate-900">CD Doctors</span>
-                </div>
+
+          {/* Slide-out Drawer with Rounded-Left Edge and Obsidian Navy Gradient */}
+          <div 
+            className={`fixed top-0 right-0 bottom-0 w-[305px] sm:w-[325px] max-w-[86vw] bg-gradient-to-b from-[#031528] via-[#051d38] to-[#020e1c] rounded-l-[32px] sm:rounded-l-[36px] shadow-[-16px_0_45px_rgba(2,14,28,0.85)] border-l border-white/10 p-5 pt-4 flex flex-col justify-between z-20 transition-transform duration-300 ease-out select-none ${
+              isClosing ? 'translate-x-full' : 'translate-x-0 animate-in slide-in-from-right duration-300'
+            }`}
+          >
+            {/* Top Area: Handle, Close Button & Profile Header */}
+            <div>
+              {/* Grab Handle & Close Button Row */}
+              <div className="flex items-center justify-between pb-3">
+                <div className="w-10 h-1 bg-white/20 rounded-full" />
                 <button
+                  type="button"
                   onClick={closeMobileMenu}
-                  className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/90 hover:text-white flex items-center justify-center transition-all cursor-pointer active:scale-95"
+                  aria-label="Close Menu"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="space-y-1">
+              {/* Profile Card Header (Matching Screenshot Layout) */}
+              {user ? (
+                /* Logged-In User Profile Header */
+                <div className="flex items-center gap-3 pt-1 pb-3">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 via-sky-500 to-teal-700 flex items-center justify-center text-white font-black text-lg ring-2 ring-teal-400/30 shadow-md shrink-0">
+                    {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-extrabold text-[15.5px] text-white leading-tight truncate">
+                      {user.name}
+                    </h3>
+                    <p className="text-[11.5px] text-slate-400 font-medium truncate mt-0.5">
+                      {user.email || user.phone || 'CD Doctors Member'}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                /* Guest / Not Signed-In Profile Header */
+                <div className="flex items-center gap-3 pt-1 pb-3">
+                  <div className="w-12 h-12 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-slate-300 ring-2 ring-white/10 shadow-md shrink-0">
+                    <User className="w-6 h-6 text-slate-200" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-extrabold text-[15.5px] text-white leading-tight">
+                      CD Doctors
+                    </h3>
+                    <p className="text-[11.5px] text-slate-400 font-medium mt-0.5">
+                      Not signed in (গেস্ট ইউজার)
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Subtle Elegant Separator Line */}
+              <div className="h-px bg-gradient-to-r from-transparent via-white/15 to-transparent my-2" />
+
+              {/* Navigation Links (Exact CD Doctors Navigation Options) */}
+              <nav className="space-y-0.5 mt-2 overflow-y-auto max-h-[calc(100vh-275px)] pr-1 scrollbar-none">
                 {navLinks.map((link) => {
                   const isActive = pathname === link.href;
                   return (
@@ -458,59 +508,80 @@ export default function Navbar() {
                       key={link.name}
                       href={link.href}
                       onClick={closeMobileMenu}
-                      className={`flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-colors ${
+                      className={`flex items-center gap-3.5 px-3.5 py-2.5 rounded-2xl text-[13.5px] font-bold transition-all duration-200 group ${
                         isActive
-                          ? (isRedHeader ? 'bg-rose-50 text-rose-700 font-black' : 'bg-sky-50 text-sky-700 font-black')
-                          : 'text-slate-700 hover:bg-slate-50 hover:text-slate-900'
+                          ? 'bg-gradient-to-r from-sky-500/25 via-sky-600/15 to-transparent text-white font-black border-l-3 border-sky-400 shadow-xs'
+                          : 'text-slate-300 hover:text-white hover:bg-white/5'
                       }`}
                     >
-                      <link.icon className={`w-4 h-4 ${
-                        isActive
-                          ? (isRedHeader ? 'text-rose-600' : 'text-sky-600')
-                          : 'text-slate-400'
+                      <link.icon className={`w-4 h-4 shrink-0 transition-transform group-hover:scale-110 ${
+                        isActive ? 'text-sky-400' : 'text-slate-400 group-hover:text-sky-300'
                       }`} />
-                      <span>{link.name}</span>
+                      <span className="truncate">{link.name}</span>
                     </Link>
                   );
                 })}
-              </div>
+              </nav>
             </div>
 
-            {user ? (
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-700 truncate">{user.name}</span>
-                <button onClick={handleLogout} className="text-xs font-bold text-rose-600">লগআউট</button>
-              </div>
-            ) : (
-              <div className="pt-4 border-t border-slate-100 space-y-2">
-                <Link
-                  href="/login"
-                  onClick={closeMobileMenu}
-                  className="w-full bg-sky-600 hover:bg-sky-700 text-white font-black text-xs py-3 rounded-xl text-center flex items-center justify-center gap-2 shadow-xs transition-colors"
-                >
-                  <UserPlus className="w-3.5 h-3.5" />
-                  <span>রোগী লগইন / সাইন আপ</span>
-                </Link>
-                <div className="grid grid-cols-2 gap-2">
-                  <Link
-                    href="/doctor/login"
-                    onClick={closeMobileMenu}
-                    className="py-2.5 px-2 rounded-xl bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-800 text-[11px] font-bold text-center border border-slate-200/80 transition-colors flex items-center justify-center gap-1.5"
+            {/* Bottom Section (Matching Screenshot Buttons) */}
+            <div className="pt-3 border-t border-white/10 space-y-2">
+              {user ? (
+                /* Logged-In User Action Buttons (Edit Profile + Sign Out) */
+                <div className="space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      closeMobileMenu();
+                      setProfileModalOpen(true);
+                    }}
+                    className="w-full py-2.5 px-4 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98"
                   >
-                    <Stethoscope className="w-3.5 h-3.5 text-sky-600" />
-                    <span>ডাক্তার পোর্টাল</span>
-                  </Link>
-                  <Link
-                    href="/hospital/login"
-                    onClick={closeMobileMenu}
-                    className="py-2.5 px-2 rounded-xl bg-slate-100 hover:bg-sky-50 text-slate-700 hover:text-sky-800 text-[11px] font-bold text-center border border-slate-200/80 transition-colors flex items-center justify-center gap-1.5"
+                    <Edit3 className="w-3.5 h-3.5 text-sky-400" />
+                    <span>Edit Profile (প্রোফাইল এডিট)</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="w-full py-2.5 px-4 rounded-full border border-rose-500/25 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 hover:text-rose-200 font-bold text-xs flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98"
                   >
-                    <Building2 className="w-3.5 h-3.5 text-sky-600" />
-                    <span>হাসপাতাল</span>
-                  </Link>
+                    <LogOut className="w-3.5 h-3.5 text-rose-400" />
+                    <span>Sign Out (লগআউট)</span>
+                  </button>
                 </div>
-              </div>
-            )}
+              ) : (
+                /* Guest User Action: Prominent Sign In / Register Button */
+                <div className="space-y-2">
+                  <Link
+                    href="/login"
+                    onClick={closeMobileMenu}
+                    className="w-full py-3 px-6 rounded-full bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 hover:from-sky-600 hover:to-sky-800 text-white font-extrabold text-[13.5px] shadow-lg shadow-sky-600/30 flex items-center justify-center gap-2 transition-all cursor-pointer active:scale-98 text-center"
+                  >
+                    <LogIn className="w-4 h-4 text-white" />
+                    <span>Sign In / Register</span>
+                  </Link>
+
+                  <div className="flex items-center justify-center gap-3 pt-1 text-[11px] text-slate-400 font-medium">
+                    <Link
+                      href="/doctor/login"
+                      onClick={closeMobileMenu}
+                      className="hover:text-sky-300 transition-colors"
+                    >
+                      ডাক্তার পোর্টাল
+                    </Link>
+                    <span className="text-white/25">•</span>
+                    <Link
+                      href="/hospital/login"
+                      onClick={closeMobileMenu}
+                      className="hover:text-sky-300 transition-colors"
+                    >
+                      হাসপাতাল কাউন্টার
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
