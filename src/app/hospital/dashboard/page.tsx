@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -66,7 +66,7 @@ const ALL_AVAILABLE_FACILITIES = [
   'Generator & Power Backup'
 ];
 
-export default function HospitalDashboardPage() {
+function HospitalDashboardContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialHospitalId = searchParams.get('hospitalId') || '';
@@ -2126,5 +2126,22 @@ export default function HospitalDashboardPage() {
 
       </main>
     </div>
+  );
+}
+
+export default function HospitalDashboardPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center p-8">
+          <div className="flex flex-col items-center gap-3">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sky-600"></div>
+            <p className="text-xs font-bold text-slate-500">হসপিটাল ড্যাশবোর্ড লোড হচ্ছে...</p>
+          </div>
+        </div>
+      }
+    >
+      <HospitalDashboardContent />
+    </Suspense>
   );
 }
