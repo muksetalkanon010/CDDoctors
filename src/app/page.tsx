@@ -164,6 +164,32 @@ export default async function HomePage() {
         doctorCount={doctorCount} 
         bloodDonorCount={bloodDonorCount} 
       />
+
+      {/* Google Knowledge Graph & Local SEO Organization Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'MedicalOrganization',
+            name: 'CD Doctors',
+            alternateName: ['সিডি ডক্টরস', 'CD Doctors Bangladesh'],
+            url: 'https://cddoctors.online',
+            logo: 'https://cddoctors.online/logo.png',
+            description: 'বাংলাদেশের শীর্ষস্থানীয় ডিজিটাল স্বাস্থ্যসেবা, ডাক্তার সিরিয়াল বুকিং ও লাইভ টেলিমেডিসিন ডিরেক্টরি প্ল্যাটফর্ম।',
+            telephone: '+8801347985686',
+            address: {
+              '@type': 'PostalAddress',
+              addressCountry: 'BD',
+            },
+            areaServed: {
+              '@type': 'Country',
+              name: 'Bangladesh',
+            },
+          }),
+        }}
+      />
     </div>
   );
 }
+
