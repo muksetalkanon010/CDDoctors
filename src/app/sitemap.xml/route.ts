@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 3600; // Cache on edge for 1 hour, auto refreshes on new requests
 
 export async function GET() {
-  const baseUrl = 'https://cddoctors.online';
+  const baseUrl = 'https://www.cddoctors.online';
   const today = new Date().toISOString().split('T')[0];
 
   const staticPages = [

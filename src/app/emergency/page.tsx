@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'Emergency Healthcare Bangladesh',
   ],
   alternates: {
-    canonical: 'https://cddoctors.online/emergency',
+    canonical: 'https://www.cddoctors.online/emergency',
   },
 };
 

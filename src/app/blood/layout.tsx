@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'Emergency Blood BD',
   ],
   alternates: {
-    canonical: 'https://cddoctors.online/blood',
+    canonical: 'https://www.cddoctors.online/blood',
   },
 };
 

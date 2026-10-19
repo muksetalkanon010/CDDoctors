@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Diagnostic Centers in Bangladesh',
   ],
   alternates: {
-    canonical: 'https://cddoctors.online/hospitals',
+    canonical: 'https://www.cddoctors.online/hospitals',
   },
 };
 

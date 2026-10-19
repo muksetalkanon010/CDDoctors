@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     'Best Doctors in Bangladesh',
   ],
   alternates: {
-    canonical: 'https://cddoctors.online/doctors',
+    canonical: 'https://www.cddoctors.online/doctors',
   },
 };
 

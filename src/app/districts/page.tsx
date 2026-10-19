@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     'Bangladesh Hospital District Directory',
   ],
   alternates: {
-    canonical: 'https://cddoctors.online/districts',
+    canonical: 'https://www.cddoctors.online/districts',
   },
 };
 

@@ -46,7 +46,7 @@ const hindSiliguri = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://cddoctors.online'),
+  metadataBase: new URL('https://www.cddoctors.online'),
   title: {
     default: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার, হাসপাতাল ও টেলিমেডিসিন ডিরেক্টরি (৬৪ জেলা)',
     template: '%s | CD Doctors',
@@ -75,17 +75,18 @@ export const metadata: Metadata = {
     'Best Doctors in Bangladesh',
   ],
   alternates: {
-    canonical: 'https://cddoctors.online',
+    canonical: 'https://www.cddoctors.online',
   },
   openGraph: {
     title: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার, হাসপাতাল ও টেলিমেডিসিন ডিরেক্টরি',
     description: 'সারাদেশের শীর্ষ বিশেষজ্ঞ চিকিৎসকদের চেম্বার শিডিউল, ভিজিট ফি, সরাসরি সিরিয়াল ও ভিডিও কল কনসালটেশন প্ল্যাটফর্ম।',
-    url: 'https://cddoctors.online',
+    url: 'https://www.cddoctors.online',
     siteName: 'CD Doctors',
     locale: 'bn_BD',
     type: 'website',
   },
 };
+
 
 
 

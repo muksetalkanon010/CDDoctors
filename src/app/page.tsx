@@ -174,8 +174,8 @@ export default async function HomePage() {
             '@type': 'MedicalOrganization',
             name: 'CD Doctors',
             alternateName: ['সিডি ডক্টরস', 'CD Doctors Bangladesh'],
-            url: 'https://cddoctors.online',
-            logo: 'https://cddoctors.online/logo.png',
+            url: 'https://www.cddoctors.online',
+            logo: 'https://www.cddoctors.online/logo.png',
             description: 'বাংলাদেশের শীর্ষস্থানীয় ডিজিটাল স্বাস্থ্যসেবা, ডাক্তার সিরিয়াল বুকিং ও লাইভ টেলিমেডিসিন ডিরেক্টরি প্ল্যাটফর্ম।',
             telephone: '+8801347985686',
             address: {

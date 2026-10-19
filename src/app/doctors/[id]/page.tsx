@@ -65,12 +65,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       'Doctor Appointment Bangladesh',
     ].filter(Boolean),
     alternates: {
-      canonical: `https://cddoctors.online/doctors/${doctor.slug || doctor.id}`,
+      canonical: `https://www.cddoctors.online/doctors/${doctor.slug || doctor.id}`,
     },
     openGraph: {
       title: `${doctor.name} (${deptName}) | CD Doctors বাংলাদেশ`,
       description: `${doctor.degrees} - চেম্বার শিডিউল, ভিজিট ফি ও সিরিয়াল বুকিং।`,
-      images: doctor.photoUrl ? [{ url: doctor.photoUrl }] : ['https://cddoctors.online/logo.png'],
+      images: doctor.photoUrl ? [{ url: doctor.photoUrl }] : ['https://www.cddoctors.online/logo.png'],
     },
   };
 }
@@ -117,7 +117,7 @@ export default async function DoctorProfilePage({ params }: PageProps) {
     '@type': 'Physician',
     name: doctor.name,
     description: `${doctor.name} (${doctor.degrees}) - ${deptName}`,
-    image: doctor.photoUrl || 'https://cddoctors.online/logo.png',
+    image: doctor.photoUrl || 'https://www.cddoctors.online/logo.png',
     medicalSpecialty: deptName,
     telephone: doctor.phone || doctor.hospital?.phone || undefined,
     priceRange: doctor.consultationFee ? `৳${doctor.consultationFee}` : undefined,
