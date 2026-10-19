@@ -48,36 +48,45 @@ const hindSiliguri = Hind_Siliguri({
 export const metadata: Metadata = {
   metadataBase: new URL('https://cddoctors.online'),
   title: {
-    default: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার, হাসপাতাল ও চেম্বার ডিরেক্টরি',
+    default: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার, হাসপাতাল ও টেলিমেডিসিন ডিরেক্টরি (৬৪ জেলা)',
     template: '%s | CD Doctors',
   },
-  description: 'বাংলাদেশের শীর্ষ বিশেষজ্ঞ ডাক্তার, প্রাইভেট হাসপাতাল ও ডায়াগনস্টিক সেন্টারের চেম্বার সময়সূচি, ভিজিট ফি ও সিরিয়ালের সরাসরি ফোন নম্বর। অনলাইনে সহজে সিরিয়াল বুকিং ও টেলিমেডিসিন সেবা।',
+  description: 'বাংলাদেশের ৬৪ জেলার শীর্ষ বিশেষজ্ঞ ডাক্তার, প্রাইভেট হাসপাতাল ও ডায়াগনস্টিক সেন্টারের চেম্বার সময়সূচি, ভিজিট ফি ও সিরিয়ালের সরাসরি ফোন নম্বর। অনলাইনে সহজে সিরিয়াল বুকিং ও লাইভ টেলিমেডিসিন পরামর্শ।',
   keywords: [
     'CD Doctors',
     'ডাক্তার বাংলাদেশ',
     'বাংলাদেশের ডাক্তার',
     'Doctor Appointment Bangladesh',
     'বাংলাদেশের বিশেষজ্ঞ ডাক্তার তালিকা',
+    'ঢাকা বিশেষজ্ঞ ডাক্তার',
+    'চট্টগ্রাম ডাক্তার তালিকা',
+    'খুলনা বিশেষজ্ঞ ডাক্তার',
+    'রাজশাহী ডাক্তার চেম্বার',
+    'সিলেট ডাক্তার তালিকা',
+    'বরিশাল ডাক্তার',
+    'রংপুর ডাক্তার',
+    'ময়মনসিংহ ডাক্তার',
     'ডাক্তার চেম্বার ও সময়সূচি',
     'অনলাইন ডাক্তার সিরিয়াল',
-    'চুয়াডাঙ্গা ডাক্তার',
-    'চুয়াডাঙ্গা হাসপাতাল',
-    'Popular Diagnostic Doctor List',
-    'Chuadanga Sadar Hospital Doctors',
+    'টেলিমেডিসিন সেবা বাংলাদেশ',
     'Telemedicine Bangladesh',
+    'Bangladesh Hospital Directory',
+    'Online Doctor Consultation BD',
+    'Best Doctors in Bangladesh',
   ],
   alternates: {
     canonical: 'https://cddoctors.online',
   },
   openGraph: {
-    title: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার ও হাসপাতাল ডিরেক্টরি',
-    description: 'বাংলাদেশের শীর্ষ বিশেষজ্ঞ ডাক্তারদের চেম্বার সময়সূচি, ভিজিট ফি ও সরাসরি সিরিয়াল বুকিং প্ল্যাটফর্ম।',
+    title: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার, হাসপাতাল ও টেলিমেডিসিন ডিরেক্টরি',
+    description: 'সারাদেশের শীর্ষ বিশেষজ্ঞ চিকিৎসকদের চেম্বার শিডিউল, ভিজিট ফি, সরাসরি সিরিয়াল ও ভিডিও কল কনসালটেশন প্ল্যাটফর্ম।',
     url: 'https://cddoctors.online',
     siteName: 'CD Doctors',
     locale: 'bn_BD',
     type: 'website',
   },
 };
+
 
 
 export default function RootLayout({

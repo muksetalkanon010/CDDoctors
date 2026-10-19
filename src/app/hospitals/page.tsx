@@ -1,4 +1,4 @@
-import React from 'react';
+import { Metadata } from 'next';
 import { db } from '@/lib/db';
 import { getSession } from '@/lib/auth';
 import HospitalsClientView from './HospitalsClientView';
@@ -6,6 +6,23 @@ import { FALLBACK_HOSPITALS } from '@/lib/staticHospitalData';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: 'বাংলাদেশের সেরা হাসপাতাল ও ডায়াগনস্টিক সেন্টারের তালিকা | CD Doctors',
+  description: 'বাংলাদেশের শীর্ষ প্রাইভেট ও সরকারি হাসপাতাল, ক্লিনিক এবং ডায়াগনস্টিক সেন্টারের আইসিইউ, বেড প্রাপ্যতা, বিশেষজ্ঞ ডাক্তার ও জরুরি যোগাযোগ নম্বর।',
+  keywords: [
+    'বাংলাদেশের হাসপাতাল তালিকা',
+    'প্রাইভেট ক্লিনিক ও ডায়াগনস্টিক সেন্টার',
+    'হাসপাতাল জরুরি নম্বর',
+    'আইসিইউ বেড বাংলাদেশ',
+    'Hospitals in Bangladesh',
+    'Diagnostic Centers in Bangladesh',
+  ],
+  alternates: {
+    canonical: 'https://cddoctors.online/hospitals',
+  },
+};
+
 
 interface PageProps {
   searchParams?: {

@@ -50,25 +50,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hospitalName = doctor.hospital?.name ? ` - ${doctor.hospital.name}` : '';
 
   return {
-    title: `${doctor.name} - ${deptName}${hospitalName} | চেম্বার, ভিজিট ফি ও সিরিয়াল নম্বর`,
-    description: `${doctor.name} (${doctor.degrees}) - ${deptName}${hospitalName}। ডাক্তারের চেম্বারের সময়সূচি, ভিজিট ফি এবং সরাসরি সিরিয়ালের ফোন নম্বর জানুন CD Doctors-এ।`,
+    title: `${doctor.name} - ${deptName}${hospitalName} | চেম্বার, ভিজিট ফি ও সিরিয়াল - CD Doctors বাংলাদেশ`,
+    description: `${doctor.name} (${doctor.degrees}) - ${deptName}${hospitalName}। ডাক্তারের চেম্বারের সময়সূচি, ভিজিট ফি এবং সরাসরি সিরিয়ালের ফোন নম্বর জানুন CD Doctors-এ।`,
     keywords: [
       doctor.name,
       `ডাঃ ${doctor.name.replace(/^(Dr\.|Doctor|ডাঃ|ডাঃ\s*)/i, '').trim()}`,
       deptName,
       doctor.specialization,
       doctor.hospital?.name || '',
-      'ডাক্তার সিরিয়াল',
-      'চেম্বার সময়সূচি',
+      'বাংলাদেশের ডাক্তার',
+      'ডাক্তার সিরিয়াল',
+      'চেম্বার সময়সূচি',
       'ভিজিট ফি',
-      'Doctor Appointment',
+      'Doctor Appointment Bangladesh',
     ].filter(Boolean),
     alternates: {
       canonical: `https://cddoctors.online/doctors/${doctor.slug || doctor.id}`,
     },
     openGraph: {
-      title: `${doctor.name} (${deptName}) | CD Doctors`,
-      description: `${doctor.degrees} - চেম্বার শিডিউল, ভিজিট ফি ও সিরিয়াল বুকিং।`,
+      title: `${doctor.name} (${deptName}) | CD Doctors বাংলাদেশ`,
+      description: `${doctor.degrees} - চেম্বার শিডিউল, ভিজিট ফি ও সিরিয়াল বুকিং।`,
       images: doctor.photoUrl ? [{ url: doctor.photoUrl }] : ['https://cddoctors.online/logo.png'],
     },
   };
@@ -137,13 +138,51 @@ export default async function DoctorProfilePage({ params }: PageProps) {
       : {}),
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: `${doctor.name}-এর চেম্বার কোথায় এবং রোগী দেখার সময় কখন?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: `${doctor.name} (${deptName})-এর চেম্বার ${doctor.chamberAddress || doctor.hospital?.address || 'হাসপাতালে অবস্থিত'}। বিস্তারিত সময়সূচি ও সরাসরি সিরিয়ালের জন্য CD Doctors প্ল্যাটফর্মে ভিজিট করুন।`,
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `${doctor.name}-এর ভিজিট ফি (Consultation Fee) কত?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: doctor.consultationFee
+            ? `পরামর্শ ফি ${doctor.consultationFee} টাকা।`
+            : 'পরামর্শ ফি জানতে সরাসরি যোগাযোগ করুন।',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: `কিভাবে ${doctor.name}-এর সিরিয়াল বুকিং করব?`,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'CD Doctors প্ল্যাটফর্মে অনলাইনে ঘরে বসেই সরাসরি সিরিয়াল বুকিং করা যায় অথবা হাসপাতালের নাম্বারে সরাসরি কল দিয়ে কনফার্ম করা যায়।',
+        },
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <DoctorDetailClientView doctor={doctor} />
     </>
   );
 }
+

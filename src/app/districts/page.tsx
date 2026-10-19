@@ -1,9 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { db } from '@/lib/db';
 import { MapPin, Building2 } from 'lucide-react';
 
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: '৬৪ জেলা ও ৮ বিভাগ হাসপাতাল ডিরেক্টরি | বাংলাদেশ - CD Doctors',
+  description: 'বাংলাদেশের ৮টি বিভাগ ও ৬৪টি জেলার সকল সরকারি ও বেসরকারি হাসপাতাল, ক্লিনিক এবং ডাক্তার চেম্বার ডিরেক্টরি। আপনার জেলা নির্বাচন করে চিকিৎসাসেবা খুঁজুন।',
+  keywords: [
+    '৬৪ জেলা হাসপাতাল বাংলাদেশ',
+    'বিভাগ ভিত্তিক ডাক্তার তালিকা',
+    'ঢাকা চট্টগ্রাম খুলনা রাজশাহী সিলেট বরিশাল রংপুর ময়মনসিংহ হাসপাতাল',
+    'Bangladesh Hospital District Directory',
+  ],
+  alternates: {
+    canonical: 'https://cddoctors.online/districts',
+  },
+};
+
 
 export default async function DistrictsPage() {
   let divisions: any[] = [];

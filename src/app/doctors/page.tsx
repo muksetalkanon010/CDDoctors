@@ -1,10 +1,30 @@
-import React from 'react';
+import { Metadata } from 'next';
 import { db } from '@/lib/db';
 import { getSession } from '@/lib/auth';
 import { FALLBACK_DOCTORS } from '@/lib/staticHospitalData';
 import DoctorsClientView from './DoctorsClientView';
 
 export const revalidate = 0;
+
+export const metadata: Metadata = {
+  title: 'সকল বিশেষজ্ঞ ডাক্তার তালিকা ও সিরিয়াল | বাংলাদেশের চেম্বার সময়সূচি',
+  description: 'মেডিসিন, হৃদরোগ, শিশু, গাইনী, অর্থোপেডিক, চর্ম ও সার্জারিসহ বাংলাদেশের ৬৪ জেলার সেরা বিশেষজ্ঞ চিকিৎসকদের চেম্বার তালিকা, ভিজিট ফি ও সরাসরি সিরিয়াল বুকিং।',
+  keywords: [
+    'বাংলাদেশের ডাক্তার তালিকা',
+    'বিশেষজ্ঞ ডাক্তার সিরিয়াল',
+    'ডাক্তার চেম্বার ও সময়সূচি',
+    'মেডিসিন বিশেষজ্ঞ ডাক্তার',
+    'কার্ডিওলজিস্ট বাংলাদেশ',
+    'গাইনী বিশেষজ্ঞ ডাক্তার',
+    'শিশু বিশেষজ্ঞ ডাক্তার',
+    'Doctor Appointment Bangladesh',
+    'Best Doctors in Bangladesh',
+  ],
+  alternates: {
+    canonical: 'https://cddoctors.online/doctors',
+  },
+};
+
 
 interface PageProps {
   searchParams: {
