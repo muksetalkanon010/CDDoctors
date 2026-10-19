@@ -46,10 +46,39 @@ const hindSiliguri = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  title: 'CD Doctors | Hospitals & Doctors in Chuadanga',
-  description: 'Discover top private hospitals, clinics, diagnostic centers, and specialist doctors across Chuadanga, Bangladesh. Book doctor appointments online.',
-  keywords: ['CD Doctors', 'Chuadanga Hospitals', 'Chuadanga Doctor Appointment', 'Popular Diagnostic Chuadanga', 'Chuadanga Sadar Hospital'],
+  metadataBase: new URL('https://cddoctors.online'),
+  title: {
+    default: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার, হাসপাতাল ও চেম্বার ডিরেক্টরি',
+    template: '%s | CD Doctors',
+  },
+  description: 'বাংলাদেশের শীর্ষ বিশেষজ্ঞ ডাক্তার, প্রাইভেট হাসপাতাল ও ডায়াগনস্টিক সেন্টারের চেম্বার সময়সূচি, ভিজিট ফি ও সিরিয়ালের সরাসরি ফোন নম্বর। অনলাইনে সহজে সিরিয়াল বুকিং ও টেলিমেডিসিন সেবা।',
+  keywords: [
+    'CD Doctors',
+    'ডাক্তার বাংলাদেশ',
+    'বাংলাদেশের ডাক্তার',
+    'Doctor Appointment Bangladesh',
+    'বাংলাদেশের বিশেষজ্ঞ ডাক্তার তালিকা',
+    'ডাক্তার চেম্বার ও সময়সূচি',
+    'অনলাইন ডাক্তার সিরিয়াল',
+    'চুয়াডাঙ্গা ডাক্তার',
+    'চুয়াডাঙ্গা হাসপাতাল',
+    'Popular Diagnostic Doctor List',
+    'Chuadanga Sadar Hospital Doctors',
+    'Telemedicine Bangladesh',
+  ],
+  alternates: {
+    canonical: 'https://cddoctors.online',
+  },
+  openGraph: {
+    title: 'CD Doctors | বাংলাদেশের বিশেষজ্ঞ ডাক্তার ও হাসপাতাল ডিরেক্টরি',
+    description: 'বাংলাদেশের শীর্ষ বিশেষজ্ঞ ডাক্তারদের চেম্বার সময়সূচি, ভিজিট ফি ও সরাসরি সিরিয়াল বুকিং প্ল্যাটফর্ম।',
+    url: 'https://cddoctors.online',
+    siteName: 'CD Doctors',
+    locale: 'bn_BD',
+    type: 'website',
+  },
 };
+
 
 export default function RootLayout({
   children,

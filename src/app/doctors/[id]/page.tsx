@@ -50,12 +50,26 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hospitalName = doctor.hospital?.name ? ` - ${doctor.hospital.name}` : '';
 
   return {
-    title: `${doctor.name} (${deptName})${hospitalName} | CD Doctors Chuadanga`,
-    description: `${doctor.name} (${doctor.degrees}) - ${deptName}। চেম্বারের সময়সূচি, ভিজিট ফি ও সরাসরি সিরিয়ালের ফোন নম্বর জানুন।`,
+    title: `${doctor.name} - ${deptName}${hospitalName} | চেম্বার, ভিজিট ফি ও সিরিয়াল নম্বর`,
+    description: `${doctor.name} (${doctor.degrees}) - ${deptName}${hospitalName}। ডাক্তারের চেম্বারের সময়সূচি, ভিজিট ফি এবং সরাসরি সিরিয়ালের ফোন নম্বর জানুন CD Doctors-এ।`,
+    keywords: [
+      doctor.name,
+      `ডাঃ ${doctor.name.replace(/^(Dr\.|Doctor|ডাঃ|ডাঃ\s*)/i, '').trim()}`,
+      deptName,
+      doctor.specialization,
+      doctor.hospital?.name || '',
+      'ডাক্তার সিরিয়াল',
+      'চেম্বার সময়সূচি',
+      'ভিজিট ফি',
+      'Doctor Appointment',
+    ].filter(Boolean),
+    alternates: {
+      canonical: `https://cddoctors.online/doctors/${doctor.slug || doctor.id}`,
+    },
     openGraph: {
-      title: `${doctor.name} | CD Doctors Chuadanga`,
-      description: `${doctor.degrees} - ${deptName}`,
-      images: doctor.photoUrl ? [{ url: doctor.photoUrl }] : [],
+      title: `${doctor.name} (${deptName}) | CD Doctors`,
+      description: `${doctor.degrees} - চেম্বার শিডিউল, ভিজিট ফি ও সিরিয়াল বুকিং।`,
+      images: doctor.photoUrl ? [{ url: doctor.photoUrl }] : ['https://cddoctors.online/logo.png'],
     },
   };
 }
@@ -96,5 +110,40 @@ export default async function DoctorProfilePage({ params }: PageProps) {
     notFound();
   }
 
-  return <DoctorDetailClientView doctor={doctor} />;
+  const deptName = doctor.department?.nameBn || doctor.specialization;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Physician',
+    name: doctor.name,
+    description: `${doctor.name} (${doctor.degrees}) - ${deptName}`,
+    image: doctor.photoUrl || 'https://cddoctors.online/logo.png',
+    medicalSpecialty: deptName,
+    telephone: doctor.phone || doctor.hospital?.phone || undefined,
+    priceRange: doctor.consultationFee ? `৳${doctor.consultationFee}` : undefined,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: doctor.chamberAddress || doctor.hospital?.address || 'বাংলাদেশ',
+      addressLocality: doctor.hospital?.district?.nameEn || 'Bangladesh',
+      addressCountry: 'BD',
+    },
+    ...(doctor.hospital
+      ? {
+          hospitalAffiliation: {
+            '@type': 'Hospital',
+            name: doctor.hospital.name,
+            address: doctor.hospital.address,
+          },
+        }
+      : {}),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <DoctorDetailClientView doctor={doctor} />
+    </>
+  );
 }
