@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /doctor/dashboard/
+Disallow: /hospital/dashboard/
+Disallow: /patient/dashboard/
+
+Sitemap: https://cddoctors.online/sitemap.xml
+Sitemap: https://www.cddoctors.online/sitemap.xml
